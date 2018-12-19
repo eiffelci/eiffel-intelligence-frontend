@@ -18,6 +18,7 @@ before_deploy:
   - mvn site
   - mvn clean
 
+
 deploy:
   skip_cleanup: true
   provider: pages
