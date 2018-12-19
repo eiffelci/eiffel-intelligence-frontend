@@ -11,4 +11,17 @@ before_install:
   - chmod +x pom.xml
   
 script:
-  - mvn test
+  - mvn test -Dtest=TestAlarm
+
+before_deploy:
+  - rm -rf docs
+  - mvn site
+  - mvn clean
+
+deploy:
+  skip_cleanup: true
+  provider: pages
+  github-token: $GITHUB_TOKEN
+  local_dir: docs/
+  on:
+    branch: emelie-test
